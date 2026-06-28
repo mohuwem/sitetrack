@@ -151,6 +151,8 @@ export default function Workers() {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [tradeFilter, setTradeFilter] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 20;
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [drawerTab, setDrawerTab] = useState<DrawerTab>("profile");
@@ -414,6 +416,15 @@ export default function Workers() {
     });
   }, [workers, searchTerm, statusFilter, tradeFilter]);
 
+  // Reset to page 1 whenever filters or search change
+  useEffect(() => { setCurrentPage(1); }, [searchTerm, statusFilter, tradeFilter]);
+
+  const totalPages = Math.ceil(filteredWorkers.length / ITEMS_PER_PAGE);
+  const paginatedWorkers = filteredWorkers.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
   const activeCount = workers.filter((w) => w.status === "Active").length;
   const onLeaveCount = workers.filter((w) => w.status === "On Leave").length;
   const linkedCount = workers.filter((w) => w.userId).length;
@@ -554,7 +565,11 @@ export default function Workers() {
           </select>
         </div>
 
-        <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">Showing {filteredWorkers.length} of {workers.length} workers</p>
+        <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+          {filteredWorkers.length === 0 ? "No workers match your filters" : (
+            <>Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredWorkers.length)} of {filteredWorkers.length} workers</>
+          )}
+        </p>
         {actionError && <p className="mb-4 text-sm text-red-500">{actionError}</p>}
         {loading && <p className="py-6 text-sm text-gray-500 dark:text-gray-400">Loading workers…</p>}
         {error && <p className="py-6 text-sm text-red-500">{error}</p>}
@@ -582,7 +597,7 @@ export default function Workers() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                {filteredWorkers.map((worker) => (
+                {paginatedWorkers.map((worker) => (
                   <tr key={worker._id} className="group hover:bg-gray-50 dark:hover:bg-white/[0.02]">
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">
@@ -633,6 +648,30 @@ export default function Workers() {
               </tbody>
             </table>
           </div>
+
+          {totalPages > 1 && (
+            <div className="mt-6 flex items-center justify-between">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Page {currentPage} of {totalPages}
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
         )}
       </div>
 

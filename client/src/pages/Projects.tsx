@@ -164,6 +164,8 @@ export default function Projects() {
   const [statusFilter, setStatusFilter] = useState("All");
   const [priorityFilter, setPriorityFilter] = useState("All");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "end-asc" | "end-desc">("end-asc");
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 20;
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [drawerTab, setDrawerTab] = useState<DrawerTab>("overview");
@@ -458,6 +460,15 @@ export default function Projects() {
       });
   }, [projects, searchTerm, statusFilter, priorityFilter, sortOrder]);
 
+  // Reset to page 1 whenever filters, search, or sort change
+  useEffect(() => { setCurrentPage(1); }, [searchTerm, statusFilter, priorityFilter, sortOrder]);
+
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
+  const paginatedProjects = filteredProjects.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
   const totalProjects = projects.length;
   const activeCount = projects.filter((p) => p.status === "Active").length;
   const completedCount = projects.filter((p) => p.status === "Completed").length;
@@ -612,7 +623,11 @@ export default function Projects() {
           </select>
         </div>
 
-        <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">Showing {filteredProjects.length} of {projects.length} projects</p>
+        <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+          {filteredProjects.length === 0 ? "No projects match your filters" : (
+            <>Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredProjects.length)} of {filteredProjects.length} projects</>
+          )}
+        </p>
 
         {actionError && <p className="mb-4 text-sm text-red-500">{actionError}</p>}
         {loading && <p className="py-6 text-sm text-gray-500 dark:text-gray-400">Loading projects…</p>}
@@ -633,7 +648,7 @@ export default function Projects() {
         {/* Project cards */}
         {!loading && !error && filteredProjects.length > 0 && (
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {filteredProjects.map((project) => {
+            {paginatedProjects.map((project) => {
               const budgetUsage = project.budget > 0 ? Math.min(100, Math.round((project.spent / project.budget) * 100)) : 0;
               const milestonesTotal = project.milestones.length;
               const milestonesCompleted = project.milestones.filter((m) => m.completed).length;
@@ -722,6 +737,30 @@ export default function Projects() {
               );
             })}
           </div>
+
+          {totalPages > 1 && (
+            <div className="mt-6 flex items-center justify-between">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Page {currentPage} of {totalPages}
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
         )}
       </div>
 
