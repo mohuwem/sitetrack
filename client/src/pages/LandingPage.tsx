@@ -101,6 +101,93 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* ── Free tools ──────────────────────────────────────────────────── */}
+        <section className="border-b border-gray-100 bg-gray-50 py-16 dark:border-gray-800 dark:bg-gray-900/50">
+          <div className="mx-auto max-w-6xl px-6">
+
+            <div className="mb-10 text-center">
+              <span className="mb-3 inline-flex rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-600 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-400">
+                Free tools
+              </span>
+              <h2 className="mt-3 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+                Construction calculators — use them now, free
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-gray-500 dark:text-gray-400">
+                Practical estimating tools for site managers, quantity surveyors, and engineers.
+                No sign-in required.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+              <Link
+                to="/utilities/brick-calculator"
+                className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-brand-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500"
+              >
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 text-lg dark:bg-orange-900/20">
+                  🧱
+                </div>
+                <span className="mb-2 inline-block rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-medium text-brand-600 dark:bg-orange-900/20 dark:text-brand-400">
+                  Estimating
+                </span>
+                <h3 className="mt-2 text-base font-semibold text-gray-900 group-hover:text-brand-500 dark:text-white">
+                  Brick Calculator
+                </h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                  Bricks and mortar bags for stretcher, English, Flemish, and cavity walls.
+                  Based on UK standard brick dimensions.
+                </p>
+                <p className="mt-4 text-xs font-medium text-brand-500 group-hover:underline">
+                  Open calculator →
+                </p>
+              </Link>
+
+              <Link
+                to="/utilities/concrete-calculator"
+                className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-brand-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500"
+              >
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-lg dark:bg-gray-800">
+                  🏗️
+                </div>
+                <span className="mb-2 inline-block rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-medium text-brand-600 dark:bg-orange-900/20 dark:text-brand-400">
+                  Estimating
+                </span>
+                <h3 className="mt-2 text-base font-semibold text-gray-900 group-hover:text-brand-500 dark:text-white">
+                  Concrete Calculator
+                </h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                  Volume for slabs, strip footings, and circular columns. Returns m³
+                  and 25 kg premix bag count with waste allowance.
+                </p>
+                <p className="mt-4 text-xs font-medium text-brand-500 group-hover:underline">
+                  Open calculator →
+                </p>
+              </Link>
+
+              <Link
+                to="/utilities"
+                className="group flex flex-col justify-between rounded-2xl border border-dashed border-gray-300 bg-white p-6 transition hover:border-brand-400 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500"
+              >
+                <div>
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-lg dark:bg-gray-800">
+                    ＋
+                  </div>
+                  <h3 className="text-base font-semibold text-gray-900 group-hover:text-brand-500 dark:text-white">
+                    More tools coming
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                    Paint coverage, roof tiles, floor screed, and more estimating calculators on the way.
+                  </p>
+                </div>
+                <p className="mt-4 text-xs font-medium text-brand-500 group-hover:underline">
+                  Browse all tools →
+                </p>
+              </Link>
+
+            </div>
+          </div>
+        </section>
+
         {/* ── Split portal cards ──────────────────────────────────────────── */}
         <section className="py-16">
           <div className="mx-auto max-w-6xl px-6">
@@ -321,65 +408,6 @@ export default function LandingPage() {
                   <p className="mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400">{feat.desc}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Free tools teaser ───────────────────────────────────────────── */}
-        <section className="border-y border-gray-100 bg-gray-50 py-14 dark:border-gray-800 dark:bg-gray-900/50">
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12">
-
-              <div className="max-w-md lg:shrink-0">
-                <p className="mb-2 text-sm font-medium text-brand-500">Free tools</p>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Construction calculators — no sign-in needed
-                </h2>
-                <p className="mt-3 text-gray-500 dark:text-gray-400">
-                  Quick estimating tools built for site managers, quantity surveyors,
-                  and engineers. Use them directly — no account required.
-                </p>
-                <Link
-                  to="/utilities"
-                  className="mt-6 inline-block rounded-lg border border-gray-300 px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
-                >
-                  Browse all tools
-                </Link>
-              </div>
-
-              <div className="grid flex-1 gap-3 sm:grid-cols-2">
-                <Link
-                  to="/utilities/brick-calculator"
-                  className="group rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-brand-400 hover:shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500"
-                >
-                  <span className="mb-2 inline-block rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-medium text-brand-600 dark:bg-orange-900/20 dark:text-brand-400">
-                    Estimating
-                  </span>
-                  <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-500 dark:text-white">
-                    Brick Calculator
-                  </p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                    Bricks and mortar for stretcher, English, Flemish, and cavity walls.
-                    UK standard dimensions.
-                  </p>
-                </Link>
-
-                <Link
-                  to="/utilities/concrete-calculator"
-                  className="group rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-brand-400 hover:shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500"
-                >
-                  <span className="mb-2 inline-block rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-medium text-brand-600 dark:bg-orange-900/20 dark:text-brand-400">
-                    Estimating
-                  </span>
-                  <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-500 dark:text-white">
-                    Concrete Calculator
-                  </p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                    Volume for slabs, footings, and columns. m³ and 25 kg bag count.
-                  </p>
-                </Link>
-              </div>
-
             </div>
           </div>
         </section>
