@@ -29,6 +29,7 @@ import WorkerTasks from "./pages/Worker/WorkerTasks";
 import WorkerAttendance from "./pages/Worker/WorkerAttendance";
 import WorkerProfile from "./pages/Worker/WorkerProfile";
 import BrickCalculator from "./pages/Utilities/BrickCalculator";
+import UtilitiesHub from "./pages/Utilities/UtilitiesHub";
 
 export default function App() {
   return (
@@ -51,6 +52,7 @@ export default function App() {
         <Route path="/worker/signup" element={<WorkerSignUp />} />
 
         {/* Public utilities — no auth required */}
+        <Route path="/utilities" element={<UtilitiesHub />} />
         <Route path="/utilities/brick-calculator" element={<BrickCalculator />} />
 
         {/* Protected + Manager-only routes */}

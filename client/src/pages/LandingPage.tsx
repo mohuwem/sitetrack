@@ -31,6 +31,12 @@ export default function LandingPage() {
 
           <nav className="flex items-center gap-2">
             <Link
+              to="/utilities"
+              className="hidden rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 sm:block"
+            >
+              Free tools
+            </Link>
+            <Link
               to="/worker/signin"
               className="hidden rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 sm:block"
             >
@@ -319,6 +325,54 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* ── Free tools teaser ───────────────────────────────────────────── */}
+        <section className="border-y border-gray-100 bg-gray-50 py-14 dark:border-gray-800 dark:bg-gray-900/50">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12">
+
+              <div className="max-w-md lg:shrink-0">
+                <p className="mb-2 text-sm font-medium text-brand-500">Free tools</p>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Construction calculators — no sign-in needed
+                </h2>
+                <p className="mt-3 text-gray-500 dark:text-gray-400">
+                  Quick estimating tools built for site managers, quantity surveyors,
+                  and engineers. Use them directly — no account required.
+                </p>
+                <Link
+                  to="/utilities"
+                  className="mt-6 inline-block rounded-lg border border-gray-300 px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                  Browse all tools
+                </Link>
+              </div>
+
+              <div className="grid flex-1 gap-3 sm:grid-cols-2">
+                <Link
+                  to="/utilities/brick-calculator"
+                  className="group rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-brand-400 hover:shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500"
+                >
+                  <span className="mb-2 inline-block rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-medium text-brand-600 dark:bg-orange-900/20 dark:text-brand-400">
+                    Estimating
+                  </span>
+                  <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-500 dark:text-white">
+                    Brick Calculator
+                  </p>
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                    Bricks and mortar for stretcher, English, Flemish, and cavity walls.
+                    UK standard dimensions.
+                  </p>
+                </Link>
+
+                <div className="flex items-center justify-center rounded-2xl border border-dashed border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900">
+                  <p className="text-xs text-gray-400 dark:text-gray-500">More tools coming soon</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* ── Bottom CTA ──────────────────────────────────────────────────── */}
         <section className="border-t border-gray-100 bg-gray-900 py-16 dark:border-gray-800">
           <div className="mx-auto max-w-3xl px-6 text-center">
@@ -357,6 +411,7 @@ export default function LandingPage() {
             <Link to="/signup" className="hover:text-gray-600 dark:hover:text-gray-300">Manager Sign Up</Link>
             <Link to="/worker/signin" className="hover:text-gray-600 dark:hover:text-gray-300">Worker Login</Link>
             <Link to="/worker/signup" className="hover:text-gray-600 dark:hover:text-gray-300">Worker Sign Up</Link>
+            <Link to="/utilities" className="hover:text-gray-600 dark:hover:text-gray-300">Free Tools</Link>
           </nav>
           <p className="text-xs text-gray-400 dark:text-gray-500">
             © {new Date().getFullYear()} SiteTrack
