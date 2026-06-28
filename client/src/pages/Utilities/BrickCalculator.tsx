@@ -141,6 +141,13 @@ export default function BrickCalculator() {
       <main className="min-h-screen bg-gray-50 py-10 px-4 dark:bg-gray-950">
         <div className="mx-auto max-w-5xl">
 
+          {/* Breadcrumb */}
+          <div className="mb-6">
+            <Link to="/utilities" className="text-sm text-brand-500 hover:underline">
+              ← All tools
+            </Link>
+          </div>
+
           {/* Page title */}
           <div className="mb-8">
             <p className="mb-1 text-sm font-medium text-brand-500">Free calculator</p>

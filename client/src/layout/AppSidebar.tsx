@@ -56,6 +56,19 @@ const navItems: NavItem[] = [
   },
 ];
 
+const CalcIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+    <rect x="4" y="2" width="16" height="20" rx="2" />
+    <rect x="7" y="5.5" width="10" height="3.5" rx="0.5" fill="currentColor" stroke="none" />
+    <circle cx="8.5" cy="13" r="1" fill="currentColor" stroke="none" />
+    <circle cx="12"  cy="13" r="1" fill="currentColor" stroke="none" />
+    <circle cx="15.5" cy="13" r="1" fill="currentColor" stroke="none" />
+    <circle cx="8.5" cy="17" r="1" fill="currentColor" stroke="none" />
+    <circle cx="12"  cy="17" r="1" fill="currentColor" stroke="none" />
+    <circle cx="15.5" cy="17" r="1" fill="currentColor" stroke="none" />
+  </svg>
+);
+
 const othersItems: NavItem[] = [
   {
     icon: <PageIcon />,
@@ -66,6 +79,11 @@ const othersItems: NavItem[] = [
     icon: <PieChartIcon />,
     name: "Analytics",
     path: "/analytics",
+  },
+  {
+    icon: <CalcIcon />,
+    name: "Tools",
+    path: "/utilities",
   },
   {
     icon: <PlugInIcon />,
