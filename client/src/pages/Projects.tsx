@@ -647,6 +647,7 @@ export default function Projects() {
 
         {/* Project cards */}
         {!loading && !error && filteredProjects.length > 0 && (
+          <>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {paginatedProjects.map((project) => {
               const budgetUsage = project.budget > 0 ? Math.min(100, Math.round((project.spent / project.budget) * 100)) : 0;
@@ -761,6 +762,7 @@ export default function Projects() {
               </div>
             </div>
           )}
+          </>
         )}
       </div>
 

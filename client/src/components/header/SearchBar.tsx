@@ -153,7 +153,7 @@ export default function SearchBar() {
 
           {results.tasks.length > 0 && (
             <Section label="Tasks">
-              {results.tasks.map((t, i) => {
+              {results.tasks.map((t) => {
                 const idx = navItems.findIndex((n) => n.label === t.title && n.href === "/tasks");
                 return (
                   <ResultRow

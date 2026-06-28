@@ -587,6 +587,7 @@ export default function Workers() {
         )}
 
         {!loading && !error && filteredWorkers.length > 0 && (
+          <>
           <div className="overflow-x-auto">
             <table className="min-w-full">
               <thead>
@@ -672,6 +673,7 @@ export default function Workers() {
               </div>
             </div>
           )}
+          </>
         )}
       </div>
 
