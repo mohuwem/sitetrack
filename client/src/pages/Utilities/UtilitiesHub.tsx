@@ -15,6 +15,12 @@ const TOOLS: Tool[] = [
     href:        "/utilities/brick-calculator",
     tag:         "Estimating",
   },
+  {
+    name:        "Concrete Calculator",
+    description: "Volume of concrete for slabs, strip footings, and circular columns. Returns m³ and 25 kg premix bag count with waste allowance.",
+    href:        "/utilities/concrete-calculator",
+    tag:         "Estimating",
+  },
 ];
 
 export default function UtilitiesHub() {

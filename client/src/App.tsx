@@ -29,6 +29,7 @@ import WorkerTasks from "./pages/Worker/WorkerTasks";
 import WorkerAttendance from "./pages/Worker/WorkerAttendance";
 import WorkerProfile from "./pages/Worker/WorkerProfile";
 import BrickCalculator from "./pages/Utilities/BrickCalculator";
+import ConcreteCalculator from "./pages/Utilities/ConcreteCalculator";
 import UtilitiesHub from "./pages/Utilities/UtilitiesHub";
 
 export default function App() {
@@ -54,6 +55,7 @@ export default function App() {
         {/* Public utilities — no auth required */}
         <Route path="/utilities" element={<UtilitiesHub />} />
         <Route path="/utilities/brick-calculator" element={<BrickCalculator />} />
+        <Route path="/utilities/concrete-calculator" element={<ConcreteCalculator />} />
 
         {/* Protected + Manager-only routes */}
         <Route element={<ProtectedRoute />}>

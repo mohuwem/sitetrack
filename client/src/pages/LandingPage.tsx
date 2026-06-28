@@ -364,9 +364,20 @@ export default function LandingPage() {
                   </p>
                 </Link>
 
-                <div className="flex items-center justify-center rounded-2xl border border-dashed border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900">
-                  <p className="text-xs text-gray-400 dark:text-gray-500">More tools coming soon</p>
-                </div>
+                <Link
+                  to="/utilities/concrete-calculator"
+                  className="group rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-brand-400 hover:shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500"
+                >
+                  <span className="mb-2 inline-block rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-medium text-brand-600 dark:bg-orange-900/20 dark:text-brand-400">
+                    Estimating
+                  </span>
+                  <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-500 dark:text-white">
+                    Concrete Calculator
+                  </p>
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                    Volume for slabs, footings, and columns. m³ and 25 kg bag count.
+                  </p>
+                </Link>
               </div>
 
             </div>
